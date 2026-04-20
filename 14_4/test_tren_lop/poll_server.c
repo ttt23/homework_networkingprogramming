@@ -85,6 +85,7 @@ int main(){
                         --i; 
                         // printf("Client %d disconnected\n", i);
                     }else{
+                        buf[ret] = 0;
                         buf[strcspn(buf, "\r\n")] = 0;
                         printf("Received %d bytes from client %d: %s\n", ret, fds[i].fd, buf);
                     }

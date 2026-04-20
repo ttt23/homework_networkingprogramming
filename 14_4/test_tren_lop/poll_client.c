@@ -34,6 +34,7 @@ int main(){
     fds[1].events = POLLIN;
     
     char buf[256]; 
+    // buf[255] = 0;
     while(1){
         int ret = poll(fds, 2, -1);
         if(ret < 0){
@@ -58,6 +59,7 @@ int main(){
                 break; 
             }
 
+            buf[ret] = 0;
             buf[strcspn(buf, "\r\n")] = 0;  
             printf("Received %d bytes from server: %s\n", ret, buf);
         }
